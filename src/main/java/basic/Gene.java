@@ -1,5 +1,5 @@
 package basic;
 
-public abstract class Gene {
-	public abstract void mutate();
+public interface Gene {
+	public void mutate();
 }

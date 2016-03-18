@@ -31,7 +31,7 @@ public class EvolutionaryAlgorithmTest {
 		populationEvaluator = mockery.mock(PopulationEvaluator.class);
 		criteriaChecker = mockery.mock(CriteriaChecker.class);
 		generationCreator = mockery.mock(GenerationCreator.class);
-		mockery.checking(new ExpectationsExtension());
+		mockery.checking(new CommonRunExpectations());
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class EvolutionaryAlgorithmTest {
 		mockery.assertIsSatisfied();
 	}
 
-	private final class ExpectationsExtension extends Expectations {
+	private final class CommonRunExpectations extends Expectations {
 		{
 			exactly(1).of(populationInitializer).initializePopulation();
 			will(returnValue(population));

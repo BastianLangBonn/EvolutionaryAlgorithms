@@ -1,5 +1,6 @@
 package basic;
 
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -11,25 +12,27 @@ import java.util.Set;
 public class Genotype {
 
 	private Set<Gene> genes;
+	private Random random;
 
 	public Genotype(Set<Gene> genes) {
+		random = new Random();
 		this.genes = genes;
 	}
 
 	/**
-	 * Recombines the genes of two individuals according to NEAT.
-	 * 
-	 * @param mate
-	 */
-	public void recombine(Genotype mate) {
-
-	}
-
-	/**
 	 * Exactly mutates one randomly selected gene in the set of genes.
+	 * 
+	 * @param probability
 	 */
-	public void mutate() {
-
+	public void mutate(double probability) {
+		double randomValue;
+		for (Gene gene : genes) {
+			randomValue = random.nextDouble();
+			if (randomValue <= probability) {
+				gene.mutate();
+				return;
+			}
+		}
 	}
 
 	public Set<Gene> getGenes() {
