@@ -1,4 +1,4 @@
-package neat;
+package basic;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Genotype {
 
 	private Set<Gene> genes;
-	
+
 	public Genotype(Set<Gene> genes) {
 		this.genes = genes;
 	}
@@ -21,15 +21,15 @@ public class Genotype {
 	 * 
 	 * @param mate
 	 */
-	public void recombine(Genotype mate){
-		
+	public void recombine(Genotype mate) {
+
 	}
-	
+
 	/**
 	 * Exactly mutates one randomly selected gene in the set of genes.
 	 */
-	public void mutate(){
-		
+	public void mutate() {
+
 	}
 
 	public Set<Gene> getGenes() {
@@ -39,6 +39,5 @@ public class Genotype {
 	public void setGenes(Set<Gene> genes) {
 		this.genes = genes;
 	}
-	
-	
+
 }

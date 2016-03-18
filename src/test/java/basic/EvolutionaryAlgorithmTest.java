@@ -1,22 +1,23 @@
-package neat;
+package basic;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
-import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for class {@link Neat}
+ * Unit test for class {@link EvolutionaryAlgorithm}
  * 
  * @author Bastian Lang
  *
  */
-public class NeatTest {
+public class EvolutionaryAlgorithmTest {
 
-	private Population population;
+	private Set<Individual> population;
 	private PopulationInitializer populationInitializer;
-	private PopulationSpeciator populationSpeciator;
 	private PopulationEvaluator populationEvaluator;
 	private CriteriaChecker criteriaChecker;
 	private GenerationCreator generationCreator;
@@ -24,14 +25,9 @@ public class NeatTest {
 
 	@Before
 	public void setUp() {
-		mockery = new Mockery() {
-			{
-				setImposteriser(ClassImposteriser.INSTANCE);
-			}
-		};
-		population = mockery.mock(Population.class);
+		mockery = new Mockery();
+		population = new HashSet<Individual>();
 		populationInitializer = mockery.mock(PopulationInitializer.class);
-		populationSpeciator = mockery.mock(PopulationSpeciator.class);
 		populationEvaluator = mockery.mock(PopulationEvaluator.class);
 		criteriaChecker = mockery.mock(CriteriaChecker.class);
 		generationCreator = mockery.mock(GenerationCreator.class);
@@ -46,9 +42,8 @@ public class NeatTest {
 	 */
 	@Test
 	public void run() throws Exception {
-		Neat subject = new Neat();
+		EvolutionaryAlgorithm subject = new EvolutionaryAlgorithm();
 		subject.setPopulationInitializer(populationInitializer);
-		subject.setPopulationSpeciator(populationSpeciator);
 		subject.setPopulationEvaluator(populationEvaluator);
 		subject.setGenerationCreator(generationCreator);
 		subject.setCriteriaChecker(criteriaChecker);
@@ -59,8 +54,6 @@ public class NeatTest {
 	private final class ExpectationsExtension extends Expectations {
 		{
 			exactly(1).of(populationInitializer).initializePopulation();
-			will(returnValue(population));
-			exactly(2).of(populationSpeciator).speciatePopulation(population);
 			will(returnValue(population));
 			exactly(2).of(populationEvaluator).evaluatePopulation(population);
 			will(returnValue(population));
