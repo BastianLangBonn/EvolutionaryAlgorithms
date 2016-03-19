@@ -1,5 +1,5 @@
 package basic;
 
-public class Phenotype {
+public interface Phenotype {
 
 }
