@@ -1,4 +1,4 @@
-package neat;
+package neural_network;
 
 /**
  * Enum containing the possible node types for the ANN used in NEAT.

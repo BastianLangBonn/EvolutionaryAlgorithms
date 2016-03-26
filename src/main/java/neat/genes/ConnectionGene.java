@@ -1,8 +1,9 @@
-package neat;
+package neat.genes;
 
 import java.util.Random;
 
 import basic.Gene;
+import neat.NeatParameters;
 
 public class ConnectionGene implements Gene {
 
@@ -67,6 +68,28 @@ public class ConnectionGene implements Gene {
 
 	public boolean isEnabled() {
 		return enabled;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + innovationNumber;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ConnectionGene other = (ConnectionGene) obj;
+		if (innovationNumber != other.innovationNumber)
+			return false;
+		return true;
 	}
 
 }

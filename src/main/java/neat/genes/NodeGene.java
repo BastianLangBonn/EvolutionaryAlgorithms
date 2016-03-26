@@ -1,6 +1,8 @@
-package neat;
+package neat.genes;
 
 import basic.Gene;
+import neural_network.ActivationType;
+import neural_network.NodeType;
 
 /**
  * Class representing a node gene for the NEAT algorithm.
@@ -41,6 +43,28 @@ public class NodeGene implements Gene {
 
 	public NodeType getNodeType() {
 		return nodeType;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NodeGene other = (NodeGene) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

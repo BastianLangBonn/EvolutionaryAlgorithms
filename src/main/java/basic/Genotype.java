@@ -3,6 +3,8 @@ package basic;
 import java.util.Random;
 import java.util.Set;
 
+import neat.genes.NodeGene;
+
 /**
  * Class representing the genotype of an individual for evolutionary algorithms.
  * 
@@ -13,10 +15,22 @@ public class Genotype {
 
 	private Set<Gene> genes;
 	private Random random;
+	private int numberOfNodeGenes;
 
 	public Genotype(Set<Gene> genes) {
 		random = new Random();
 		this.genes = genes;
+		numberOfNodeGenes = countNumberOfNodeGenes(genes);
+	}
+
+	private int countNumberOfNodeGenes(Set<Gene> genes) {
+		int result = 0;
+		for (Gene gene : genes) {
+			if (gene instanceof NodeGene) {
+				result++;
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -41,6 +55,11 @@ public class Genotype {
 
 	public void setGenes(Set<Gene> genes) {
 		this.genes = genes;
+		numberOfNodeGenes = countNumberOfNodeGenes(genes);
+	}
+
+	public int getNumberOfNodeGenes() {
+		return numberOfNodeGenes;
 	}
 
 }

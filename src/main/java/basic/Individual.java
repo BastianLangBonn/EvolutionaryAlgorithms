@@ -12,10 +12,10 @@ public class Individual {
 	private Phenotype phenotype;
 	private double fitness;
 
-	public Individual(Genotype genotype, Phenotype phenotype, double fitness) {
+	public Individual(Genotype genotype, Phenotype phenotype) {
 		this.setGenotype(genotype);
 		this.setPhenotype(phenotype);
-		this.setFitness(fitness);
+		this.fitness = 0.0;
 	}
 
 	public Genotype getGenotype() {

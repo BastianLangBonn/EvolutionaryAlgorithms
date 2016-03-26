@@ -1,4 +1,4 @@
-package neat;
+package neural_network;
 
 /**
  * Enum containing all possible types of activation functions for the ANN used
