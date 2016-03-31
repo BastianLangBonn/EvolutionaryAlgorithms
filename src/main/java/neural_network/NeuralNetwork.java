@@ -7,6 +7,11 @@ import org.jblas.DoubleMatrix;
 import neat.NeatParameters;
 import neural_network.activation_functions.ActivationFunction;
 
+/**
+ * Class representing a neural network.
+ * @author bastian
+ *
+ */
 public class NeuralNetwork {
 
 	/**
@@ -38,6 +43,12 @@ public class NeuralNetwork {
 		this.activationFunctions = activationFunctions;
 	}
 
+	/**
+	 * Propagates the given input through the network and returns the output.
+	 * The number of outputs are specified in the class {@link NeatParameters}.
+	 * @param input
+	 * @return A {@link DoubleMatrix} containing the output of the propagation.
+	 */
 	public DoubleMatrix compute(int[] input) {
 		int numberOfInputs = input.length;
 		validateNumberOfInputs(numberOfInputs);
