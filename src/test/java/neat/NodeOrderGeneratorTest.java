@@ -67,9 +67,8 @@ public class NodeOrderGeneratorTest {
     Genotype genotype = new Genotype(genes);
 
     // Act
-    int[] result = subject.generate(genotype);
+    subject.generate(genotype);
 
-    System.out.println(result);
   }
 
   @Test
@@ -90,6 +89,23 @@ public class NodeOrderGeneratorTest {
     for (int i = 0; i < result.length; i++) {
       Assert.assertEquals("Wrong element at position " + i, expected[i], result[i]);
     }
+  }
+
+  @Test
+  public void generate_disabledConnection_noError() throws Exception {
+    // Arrange
+    HashSet<Gene> genes = new HashSet<Gene>();
+    genes.add(input);
+    genes.add(output);
+    ConnectionGene connection = new ConnectionGene(1,
+        new NodeGene(2, ActivationType.HYPERBOLIC_TANGENT, NodeType.HIDDEN), output, 0.5);
+    connection.setEnabled(false);
+    genes.add(connection);
+    Genotype genotype = new Genotype(genes);
+
+    // Act
+    subject.generate(genotype);
+
   }
 
 }

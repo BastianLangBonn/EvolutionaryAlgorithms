@@ -27,6 +27,9 @@ public class NodeOrderGenerator {
       for (NodeGene node : nodes) {
         Set<NodeGene> sourceNodes = new HashSet<NodeGene>();
         for (ConnectionGene connection : connections) {
+          if (!connection.isEnabled()) {
+            continue;
+          }
           if (connection.getDestination().equals(node)) {
             sourceNodes.add(connection.getSource());
           }
